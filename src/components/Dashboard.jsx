@@ -4,7 +4,7 @@
  * Clean architecture with clear separation of concerns
  */
 
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import {
   TrendingUp,
   BarChart3,
@@ -23,7 +23,7 @@ import TrendsTab from './tabs/TrendsTab';
 import RiskTab from './tabs/RiskTab';
 import ComparisonTab from './tabs/ComparisonTab';
 import AIChat from './AIChat';
-import LoadingSpinner from './common/LoadingSpinner';
+
 import ErrorMessage from './common/ErrorMessage';
 import DataQualityIndicator from './common/DataQualityIndicator';
 import { DashboardSkeleton } from './common/SkeletonLoader';
@@ -86,7 +86,6 @@ const Dashboard = () => {
   const [error, setError] = useState(null);
   const [showAIChat, setShowAIChat] = useState(false);
   const [dataValidation, setDataValidation] = useState(null);
-  const [validationLoading, setValidationLoading] = useState(false);
 
   /**
    * Load company data when ticker changes
@@ -132,7 +131,6 @@ const Dashboard = () => {
    * @param {Object} financialData - Financial data to validate
    */
   const validateDataQuality = async (ticker, financialData) => {
-    setValidationLoading(true);
     try {
       const validation = await validateCompanyData(ticker, financialData);
       setDataValidation(validation);
@@ -144,8 +142,6 @@ const Dashboard = () => {
         overallScore: 0,
         warnings: [{ type: 'validation_error', message: err.message }]
       });
-    } finally {
-      setValidationLoading(false);
     }
   };
 
