@@ -1,0 +1,234 @@
+/**
+ * Enhanced Company Selector Styles
+ * Modern, accessible dropdown with improved UX
+ */
+
+.company-selector {
+  position: relative;
+  width: 100%;
+  max-width: 450px;
+  min-width: 300px;
+}
+
+.selector-label {
+  display: block;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-neutral-700);
+  margin-bottom: var(--space-2);
+  letter-spacing: 0.025em;
+}
+
+.selector-container {
+  position: relative;
+}
+
+.selector-container.disabled {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.selector-button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-4) var(--space-5);
+  background: white;
+  border: 1px solid var(--color-neutral-300);
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  text-align: left;
+  box-shadow: var(--shadow-sm);
+  position: relative;
+}
+
+.selector-button:hover:not(:disabled) {
+  border-color: var(--color-primary-500);
+  box-shadow: 0 0 0 3px var(--color-primary-100), var(--shadow-md);
+  transform: translateY(-1px);
+}
+
+.selector-button:focus-visible {
+  outline: none;
+  border-color: var(--color-primary-500);
+  box-shadow: 0 0 0 3px var(--color-primary-100);
+}
+
+.selector-button.open {
+  border-color: var(--color-primary-500);
+  box-shadow: 0 0 0 3px var(--color-primary-100), var(--shadow-md);
+  border-bottom-left-radius: var(--radius-md);
+  border-bottom-right-radius: var(--radius-md);
+}
+}
+
+.selected-company {
+  flex: 1;
+}
+
+.company-ticker {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #111827;
+}
+
+.company-name {
+  font-size: 0.875rem;
+  color: #6b7280;
+  margin-top: 0.125rem;
+}
+
+.chevron {
+  width: 20px;
+  height: 20px;
+  color: #6b7280;
+  transition: transform 0.2s;
+}
+
+.chevron.rotated {
+  transform: rotate(180deg);
+}
+
+/* Dropdown Menu */
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  margin-top: 0.25rem;
+  background: white;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  max-height: 400px;
+  overflow: hidden;
+}
+
+/* Search Container */
+.search-container {
+  position: relative;
+  padding: 0.75rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.search-icon {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  color: #9ca3af;
+}
+
+.search-input {
+  width: 100%;
+  padding: 0.5rem 0.75rem 0.5rem 2.5rem;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  outline: none;
+}
+
+.search-input:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+/* Company List */
+.company-list {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.company-option {
+  width: 100%;
+  padding: 0.75rem;
+  border: none;
+  background: white;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  text-align: left;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.company-option:hover {
+  background: #f9fafb;
+}
+
+.company-option.selected {
+  background: #eff6ff;
+  border-color: #dbeafe;
+}
+
+.company-option:last-child {
+  border-bottom: none;
+}
+
+.option-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.option-ticker {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #111827;
+}
+
+.option-name {
+  font-size: 0.875rem;
+  color: #374151;
+  line-height: 1.3;
+}
+
+.option-meta {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 0.25rem;
+}
+
+.market-cap,
+.segment {
+  font-size: 0.75rem;
+  padding: 0.125rem 0.5rem;
+  border-radius: 12px;
+  font-weight: 500;
+}
+
+.market-cap {
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+
+.segment {
+  background: #f3f4f6;
+  color: #6b7280;
+}
+
+/* No Results */
+.no-results {
+  padding: 2rem;
+  text-align: center;
+  color: #6b7280;
+  font-size: 0.875rem;
+}
+
+/* Responsive Design */
+@media (max-width: 640px) {
+  .company-selector {
+    max-width: 100%;
+  }
+  
+  .dropdown-menu {
+    max-height: 300px;
+  }
+  
+  .company-list {
+    max-height: 200px;
+  }
+}

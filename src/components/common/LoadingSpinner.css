@@ -1,0 +1,105 @@
+/**
+ * Enhanced Loading Spinner Styles
+ * Accessible, professional loading indicators with modern design
+ */
+
+.loading-spinner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-8);
+  text-align: center;
+  gap: var(--space-4);
+  position: relative;
+}
+
+.spinner-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(4px);
+  z-index: var(--z-modal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.spinner-icon {
+  animation: spin 1s linear infinite;
+  color: var(--color-primary-600);
+  filter: drop-shadow(0 2px 4px rgba(59, 130, 246, 0.2));
+}
+
+.spinner-sm .spinner-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.spinner-md .spinner-icon {
+  width: 32px;
+  height: 32px;
+}
+
+.spinner-lg .spinner-icon {
+  width: 48px;
+  height: 48px;
+}
+
+.spinner-message {
+  color: var(--color-neutral-600);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  margin: 0;
+  letter-spacing: 0.025em;
+}
+
+.spinner-sm .spinner-message {
+  font-size: var(--font-size-xs);
+}
+
+.spinner-lg .spinner-message {
+  font-size: var(--font-size-base);
+}
+
+/* Enhanced Animations */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Accessibility Support */
+@media (prefers-reduced-motion: reduce) {
+  .spinner-icon {
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+  }
+}
+
+@media (prefers-contrast: high) {
+  .spinner-icon {
+    color: var(--color-neutral-900);
+    filter: none;
+  }
+
+  .spinner-overlay {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: none;
+  }
+
+  .spinner-message {
+    color: var(--color-neutral-900);
+    font-weight: var(--font-weight-semibold);
+  }
+}
